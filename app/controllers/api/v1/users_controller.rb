@@ -1,18 +1,19 @@
 module Api
   module V1
-    class UsersController < ApiController
-      SECRET = "auth-token".freeze
+    class UsersController < AuthController
+      before_action :authentication, except: %i[login create]
 
-      # turn user data (payload) to an encrypted string  [ B ]
-      def encode_user_data(payload)
-        JWT.encode payload, SECRET, "HS256"
-      end
-
-      # decode token and return user info, this returns an array, [payload and algorithms] [ A ]
-      def decode_user_data(token)
-        JWT.decode token, SECRET, true, algorithm: "HS256"
-      rescue StandardError => e
-        puts e
+      def login
+        user = User.find_by_email(login_params[:email])
+        p user
+        if user.password_digest == login_params[:password_digest]
+          # we encrypt user info using the pre-define methods in application controller
+          token = encode_user_data(user_id: user.id, role: user.role, email: user.email)
+          # return to user
+          render json: { token: token }
+        else
+          render json: { message: "invalid credentials" }
+        end
       end
 
       def index
@@ -26,19 +27,6 @@ module Api
         @users.save!
         json_response(template: "api/v1/users/collection",
                       messages: ["User registered"])
-      end
-
-      def login
-        user = User.find_by_email(login_params[:email])
-        p user
-        if user.password_digest == login_params[:password_digest]
-          # we encrypt user info using the pre-define methods in application controller
-          token = encode_user_data(user_data: user.id)
-          # return to user
-          render json: { token: token }
-        else
-          render json: { message: "invalid credentials" }
-        end
       end
 
       private

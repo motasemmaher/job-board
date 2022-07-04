@@ -1,6 +1,7 @@
 module Api
   module V1
-    class ApplicationsController < ApiController
+    class ApplicationsController < AuthController
+      before_action :authentication, except: %i[index show]
 
       # GET  /api/v1/applications
       def index
