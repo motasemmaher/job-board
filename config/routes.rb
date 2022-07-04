@@ -12,6 +12,20 @@ Rails.application.routes.draw do
     end
   end
 
+  put "health", to: "healths#check"
+  namespace :api do
+    namespace :v1 do
+      resources :jobs, method: :edit
+    end
+  end
+
+  post "health", to: "healths#check"
+  namespace :api do
+    namespace :v1 do
+      resources :jobs, method: :create
+    end
+  end
+
   # users API's
   get "health", to: "healths#check"
   namespace :api do

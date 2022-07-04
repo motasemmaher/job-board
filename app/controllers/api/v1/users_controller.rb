@@ -1,11 +1,18 @@
 module Api
   module V1
     class UsersController < ApiController
-      SECRET = "auth-token"
+      SECRET = "auth-token".freeze
 
       # turn user data (payload) to an encrypted string  [ B ]
       def encode_user_data(payload)
         JWT.encode payload, SECRET, "HS256"
+      end
+
+      # decode token and return user info, this returns an array, [payload and algorithms] [ A ]
+      def decode_user_data(token)
+        JWT.decode token, SECRET, true, algorithm: "HS256"
+      rescue StandardError => e
+        puts e
       end
 
       def index
@@ -33,7 +40,6 @@ module Api
           render json: { message: "invalid credentials" }
         end
       end
-
 
       private
 

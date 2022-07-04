@@ -10,11 +10,23 @@ module Api
 
       # POST /api/v1/users
       def create
-        @job = Job.new(job_params)
-        @job.save!
+        @jobs = Job.new(job_params)
+        @jobs.save!
         json_response(template: "api/v1/jobs/collection",
                       messages: ["Post a Job"])
       end
+
+      def update
+        @jobs = Job.where(id: params[:id]).update(job_params)
+        if !@jobs.empty?
+          json_response(template: "api/v1/jobs/collection",
+                        messages: ["Job Updated Successfully"])
+        else
+          json_response(template: "api/v1/jobs/collection",
+                        messages: ["The job not found"])
+        end
+      end
+
 
       private
 

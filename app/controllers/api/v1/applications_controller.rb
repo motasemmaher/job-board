@@ -11,7 +11,7 @@ module Api
 
       # GET  /api/v1/applications/:id
       def show
-        @applications = Application.find(params[:id])
+        @applications = Application.find(id: params[:id])
         json_response(template: "api/v1/applications/collection",
                       messages: ["success"])
       end
