@@ -40,4 +40,20 @@ class AuthController < ApiController
       false
     end
   end
+
+  def check_is_admin
+    if get_user_role(request.headers[:token]) == "admin"
+      true
+    else
+      render json: { message: "invalid Authorization" }
+    end
+  end
+
+  def check_is_user
+    if get_user_role(request.headers[:token]) == "user"
+      true
+    else
+      render json: { message: "invalid Authorization" }
+    end
+  end
 end

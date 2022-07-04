@@ -1,8 +1,9 @@
 module Api
   module V1
     class ApplicationsController < AuthController
-      before_action :authentication, except: %i[index show]
-
+      before_action :authentication
+      before_action :check_is_admin, only: %i[index show]
+      before_action :check_is_user, only: %i[create]
       # GET  /api/v1/applications
       def index
         @applications = Application.all
@@ -26,7 +27,7 @@ module Api
         @applications = Application.new(application_params)
         @applications.save!
         json_response(template: "api/v1/applications/collection",
-                      messages: ["Application applied"])
+                      messages: ["success"])
       end
 
       private

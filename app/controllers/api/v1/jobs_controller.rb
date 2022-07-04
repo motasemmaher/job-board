@@ -1,6 +1,9 @@
 module Api
   module V1
-    class JobsController < ApiController
+    class JobsController < AuthController
+      before_action :authentication, except: %i[index show]
+      before_action :check_is_admin, only: %i[create update]
+
       # GET /api/v1/users
       def index
         @jobs = Job.all
@@ -12,8 +15,8 @@ module Api
       def create
         @jobs = Job.new(job_params)
         @jobs.save!
-        json_response(template: "api/v1/jobs/collection",
-                      messages: ["Post a Job"])
+        json_response(template: "api/v1/applications/collection",
+                      messages: ["success"])
       end
 
       def update
