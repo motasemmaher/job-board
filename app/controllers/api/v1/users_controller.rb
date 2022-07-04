@@ -3,6 +3,7 @@ module Api
     class UsersController < AuthController
       before_action :authentication, except: %i[login create]
 
+      # POST /api/v1/users/login
       def login
         user = User.find_by_email(login_params[:email])
         p user
@@ -16,12 +17,15 @@ module Api
         end
       end
 
+      # GET /api/v1/users
       def index
         @users = User.all
         json_response(template: "api/v1/users/collection",
                       messages: ["success"])
       end
 
+      # POST /api/v1/users
+      # after create a new account it's need to login to generate a new token
       def create
         @users = User.new(user_params)
         @users.save!
