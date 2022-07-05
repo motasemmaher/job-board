@@ -1,0 +1,13 @@
+default: &default
+
+test:
+  <<: *default
+  secret: <%= ENV.fetch("SECRET_TEST", "") %>
+
+development:
+  <<: *default
+  secret: <%= ENV.fetch("SECRET_DEV", "") %>
+
+production:
+  <<: *default
+  secret: <%= ENV.fetch("SECRET", "") %>
