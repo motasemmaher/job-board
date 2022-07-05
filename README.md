@@ -28,11 +28,6 @@
     $ rvm use 3.1.2@job-board --ruby-version
     $ gem install bundler:2.3.10
 
-If you are using macOS, a recommended approach is to install ImageMagick using Homebrew.   
-This can be done with the following command:
-
-    $ brew install imagemagick
-
 ### 6. Install dependencies
 On the project root there is a Gemfile file.  
 Make sure you install all the required dependencies before running app.
