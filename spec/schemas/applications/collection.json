@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": [
+    "success",
+    "messages",
+    "data"
+  ],
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "messages": {
+      "type": "array",
+      "items": "string"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "applications"
+      ],
+      "properties": {
+        "applications": {
+          "type": "array",
+          "items": {
+            "$ref": "_application.json"
+          }
+        }
+      }
+    }
+  }
+}

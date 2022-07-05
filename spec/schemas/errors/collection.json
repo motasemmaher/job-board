@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": [
+    "success",
+    "messages",
+    "errors"
+  ],
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "messages": {
+      "type": "array",
+      "items": "string"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "_error.json"
+      }
+    }
+  }
+}

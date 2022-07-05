@@ -1,0 +1,9 @@
+en:
+  errors:
+    default: "Sorry, something went wrong"
+    find: "Invalid id, could not find the %{model}"
+    str?: "Invalid data type, it should be string"
+    int?: "Invalid data type, it should be integer or big integer"
+    float?: "Invalid data type, it should be float"
+    date?: "Invalid data type, it should be ISO 8601-encoded date"
+    date_time?: "Invalid data type, it should be ISO 8601-encoded datetime"

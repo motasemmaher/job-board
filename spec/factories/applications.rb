@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :application do
-    user_id { Faker::Number.rand(100) }
-    job_id { Faker::Number.rand(100) }
+    id { Faker::Number.within(range: 100..10_000) }
+    status { %i[seen not_seen].sample }
+
+    association :user, factory: :user
+    association :job, factory: :job
   end
 end

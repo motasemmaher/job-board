@@ -1,0 +1,31 @@
+en:
+  concept:
+    models:
+      user:
+        one: "User"
+        other: "Users"
+    attributes:
+      user:
+        id: "Id"
+        email: "Email"
+        password_digest: "Password"
+        role: "Role"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        deleted_at: "Deleted at"
+    messages:
+      models:
+        user:
+          create: "The user has been created successfully"
+          update: "The user has been updated successfully"
+          delete: "The user has been deleted successfully"
+          show: "The user has been retrieved successfully"
+          index: "The users have been retrieved successfully"
+    errors:
+      models:
+        user:
+          create: "The user has not been created"
+          update: "The user has not been updated"
+          delete: "The user has not been deleted"
+          show: "The user has not been retrieved"
+          index: "The users have not been retrieved"

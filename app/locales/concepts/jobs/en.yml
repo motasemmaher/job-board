@@ -1,0 +1,30 @@
+en:
+  concept:
+    models:
+      job:
+        one: "Job"
+        other: "Jobs"
+    attributes:
+      job:
+        id: "Id"
+        title: "Title"
+        description: "Description"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        deleted_at: "Deleted at"
+    messages:
+      models:
+        job:
+          create: "The job has been created successfully"
+          update: "The job has been updated successfully"
+          delete: "The job has been deleted successfully"
+          show: "The job has been retrieved successfully"
+          index: "The jobs have been retrieved successfully"
+    errors:
+      models:
+        job:
+          create: "The job has not been created"
+          update: "The job has not been updated"
+          delete: "The job has not been deleted"
+          show: "The job has not been retrieved"
+          index: "The jobs have not been retrieved"

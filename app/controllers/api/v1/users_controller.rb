@@ -29,8 +29,8 @@ module Api
       # POST /api/v1/users
       # after create a new account it's need to login to generate a new token
       def create
-        @users = User.new(user_params)
-        @users.save!
+        @user = User.new(user_params)
+        @user.save!
         json_response(template: "api/v1/users/collection",
                       messages: ["User registered"])
       rescue StandardError => e

@@ -1,0 +1,19 @@
+{
+  "type": "object, null",
+  "required": [
+    "code",
+    "path",
+    "message"
+  ],
+  "properties": {
+    "code": {
+      "type": "string, integer, null"
+    },
+    "path": {
+      "type": "string, null"
+    },
+    "message": {
+      "type": "string"
+    }
+  }
+}
