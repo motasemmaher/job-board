@@ -8,16 +8,12 @@ module Api
         @user = User.find_by_email(login_params[:email])
         if @user.password_digest == login_params[:password_digest]
           # we encrypt user info using the pre-define methods in application controller
-          # token = encode_user_data(user_id: user.id, role: user.role, email: user.email)
           # return to user
-          # @user = user.attributes
-          # @user[:token] = encode_user_data(user_id: user.id, role: user.role, email: user.email)
-
           @user.token = encode_user_data(user_id: @user.id, role: @user.role, email: @user.email)
           json_response(template: "api/v1/users/object",
                         messages: ["success"])
         else
-          render json: { message: "invalid credentials" }
+          render json: { message: "invalid credentials", success: false }
         end
       end
 
