@@ -50,6 +50,9 @@ Make sure you install all the required dependencies before running app.
 ### 9. Run App
     $ rails server -p 3001 -b 0.0.0.0
 
+## Demo
+    $ https://sea-lion-app-2tzxu.ondigitalocean.app
+All api's started with api/v1
 
 ## Copyright
 Copyright (c) 2022 Mo'tasem Maher Salem.
