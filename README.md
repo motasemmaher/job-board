@@ -50,7 +50,7 @@ Make sure you install all the required dependencies before running app.
 All api's started with api/v1
 
 ## Copyright
-Copyright (c) 2022 Mo'tasem Maher Salem.
+Copyright (c) 2022 ENG.Mo'tasem Maher Salem.
 
 [rvm]: https://rvm.io/
 [ruby]: https://www.ruby-lang.org/
